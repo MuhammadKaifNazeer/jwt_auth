@@ -31,7 +31,7 @@ const ProfilePage = () => {
         setLoading(false);
       } catch (error) {
         console.log("Error fetching user data: ", error);
-        router.push("/login");
+        // router.push("/login");
       }
     };
 
