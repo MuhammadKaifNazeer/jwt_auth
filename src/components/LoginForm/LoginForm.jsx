@@ -81,12 +81,6 @@ const LoginForm = () => {
                     required
                   />
                 </div>
-                {/* <button
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-green-500 text-primary-foreground shadow hover:bg-green-500/90 h-9 px-4 py-2 w-full"
-                  type="submit"
-                >
-                  Login
-                </button> */}
                 <LoaderButton loading={loading}>Login</LoaderButton>
               </div>
               {error && (
@@ -97,47 +91,11 @@ const LoginForm = () => {
             </form>
             <div className="mt-4 text-center text-sm">
               Don't have an account?{" "}
-              <a className="underline" href="/signup">
+              <Link className="underline" href="/signup">
                 Sign up
-              </a>
+              </Link>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="min-h-screen min-w-screen bg-zinc-900">
-        <div className="w-full min-h-screen bg-zinc-900 text-white p-10">
-          <h3 className="text-4xl mb-3 font-semibold">Login</h3>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <input
-              className="px-3 py-2 bg-zinc-800 rounded-lg"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              className="px-3 py-2 bg-zinc-800 rounded-lg"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <LoaderButton loading={loading}>Login</LoaderButton>
-            {error && (
-              <div className="border rounded-lg border-zinc-800 px-3 py-2 w-max">
-                {error}
-              </div>
-            )}
-          </form>
-          <p className="mt-3 text-lg">
-            Don't have an account?{" "}
-            <Link href="/signup" className="text-green-500 font-bold">
-              Register
-            </Link>
-          </p>
         </div>
       </div>
     </>
