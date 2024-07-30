@@ -120,8 +120,6 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
-
 const LoaderButton = ({ loading, children, ...props }) => {
   return (
     <button
@@ -134,3 +132,38 @@ const LoaderButton = ({ loading, children, ...props }) => {
     </button>
   );
 };
+
+const styles = `
+  .buttonLoader {
+    display: inline-block;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-top-color: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: blspin 1s linear infinite;
+  }
+
+  @keyframes blspin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+const injectStyles = () => {
+  if (typeof document !== "undefined") {
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+  }
+};
+
+injectStyles();
+
+export default SignupForm;
