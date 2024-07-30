@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { dbConnect } from "@/lib/dbConnect";
-import LoaderButton from "@/components/LoaderButton/LoaderButton";
 
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
@@ -40,51 +39,142 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="min-h-screen min-w-screen bg-zinc-900">
-      <div className="w-full min-h-screen bg-zinc-900 text-white p-10">
-        <h3 className="text-4xl mb-3 font-semibold">Register</h3>
-        <form
-          onSubmit={handleSubmit}
-          method="POST"
-          className="flex flex-col gap-3"
-        >
-          <input
-            className="px-3 py-2 bg-zinc-800 rounded-lg"
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            className="px-3 py-2 bg-zinc-800 rounded-lg"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className="px-3 py-2 bg-zinc-800 rounded-lg"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <LoaderButton loading={loading}>Register</LoaderButton>
-          {error && (
-            <div className="border rounded-lg broder-zinc-800 px-3 py-2 w-max">
-              {error}
+    <div className="flex items-center justify-center h-screen bg-black text-white">
+      <div className="rounded-xl border border-[#27272A] bg-card text-card-foreground shadow mx-auto max-w-sm">
+        <div className="flex flex-col space-y-1.5 p-6">
+          <h3 className="font-semibold tracking-tight text-2xl">Sign Up</h3>
+          <p className="text-sm text-muted-foreground">
+            Enter your information to create an account
+          </p>
+        </div>
+        <div className="p-6 pt-0">
+          <form onSubmit={handleSubmit} method="POST">
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <label
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  htmlFor="name"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="flex h-9 w-full rounded-md border border-[#27272A] border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Muhammad Kaif Nazeer"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="flex h-9 w-full rounded-md border border-[#27272A] border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  id="email"
+                  placeholder="m@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  htmlFor="password"
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="flex h-9 w-full rounded-md border border-[#27272A] border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <LoaderButton loading={loading}>Register</LoaderButton>
             </div>
-          )}
-        </form>
-        <p className="mt-3 text-lg">
-          Already have an account?{" "}
-          <Link href="/login" className="text-green-500 font-bold">
-            Login
-          </Link>
-        </p>
+            {error && (
+              <div className="border rounded-lg border-[#27272A] px-3 py-2 w-max mt-4">
+                {error}
+              </div>
+            )}
+          </form>
+          <div className="mt-4 text-center text-sm">
+            Already have an account?{" "}
+            <Link className="underline" href="/login">
+              Login
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
+    // <div className="min-h-screen min-w-screen bg-zinc-900">
+    //   <div className="w-full min-h-screen bg-zinc-900 text-white p-10">
+    //     <h3 className="text-4xl mb-3 font-semibold">Register</h3>
+    //     <form
+    //       onSubmit={handleSubmit}
+    //       method="POST"
+    //       className="flex flex-col gap-3"
+    //     >
+    //       <input
+    //         className="px-3 py-2 bg-zinc-800 rounded-lg"
+    //         type="text"
+    //         placeholder="Name"
+    //         value={name}
+    //         onChange={(e) => setName(e.target.value)}
+    //       />
+    //       <input
+    //         className="px-3 py-2 bg-zinc-800 rounded-lg"
+    //         type="email"
+    //         placeholder="Email"
+    //         value={email}
+    //         onChange={(e) => setEmail(e.target.value)}
+    //       />
+    //       <input
+    //         className="px-3 py-2 bg-zinc-800 rounded-lg"
+    //         type="password"
+    //         placeholder="Password"
+    //         value={password}
+    //         onChange={(e) => setPassword(e.target.value)}
+    //       />
+    //       <LoaderButton loading={loading}>Register</LoaderButton>
+    //       {error && (
+    //         <div className="border rounded-lg broder-zinc-800 px-3 py-2 w-max">
+    //           {error}
+    //         </div>
+    //       )}
+    //     </form>
+    //     <p className="mt-3 text-lg">
+    //       Already have an account?{" "}
+    //       <Link href="/login" className="text-green-500 font-bold">
+    //         Login
+    //       </Link>
+    //     </p>
+    //   </div>
+    // </div>
   );
 };
 
 export default SignupForm;
+
+const LoaderButton = ({ loading, children, ...props }) => {
+  return (
+    <button
+      {...props}
+      className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0DDD50] text-primary-foreground shadow hover:bg-[#0DDD50]/90 h-9 px-4 py-2 w-full ${props.className} ${loading ? "bg-[#0DDD50]/70 text-white/80" : ""}`}
+      disabled={loading || props.disabled}
+    >
+      {loading && <div className="buttonLoader mr-2"></div>}
+      {children}
+    </button>
+  );
+};
