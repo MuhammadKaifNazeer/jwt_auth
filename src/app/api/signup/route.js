@@ -26,9 +26,7 @@ export async function POST(req) {
     const user = await User.create({ name, email, password: hashedPassword });
 
     // Generate a JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
     // Set the JWT token as a cookie
     const response = NextResponse.json(
